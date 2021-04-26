@@ -51,8 +51,8 @@ while True:
                     upbit.buy_market_order("KRW-BCH", krw*0.9995)
         else:
             bch = get_balance("BCH")
-            if bch > 0.00008:
-                upbit.sell_market_order("KRW-BCH", btc*0.9995)
+            if bch > 0.000008:
+                upbit.sell_market_order("KRW-BCH", bch*0.9995)
         time.sleep(1)
     except Exception as e:
         print(e)
