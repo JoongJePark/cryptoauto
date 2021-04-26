@@ -43,16 +43,25 @@ while True:
         end_time = start_time + datetime.timedelta(days=1)
 
         if start_time < now < end_time - datetime.timedelta(seconds=10):
-            target_price = get_target_price("KRW-BCH", 0.5)
-            current_price = get_current_price("KRW-BCH")
-            if target_price < current_price:
+            target_price_bch = get_target_price("KRW-BCH", 0.5)
+            current_price_bch = get_current_price("KRW-BCH")
+            target_price_ltc = get_target_price("KRW-LTC", 0.5)
+            current_price_ltc = get_current_price("KRW-LTC")
+            if target_price_bch < current_price_bch:
                 krw = get_balance("KRW")
                 if krw > 5000:
                     upbit.buy_market_order("KRW-BCH", krw*0.9995)
+            if target_price_ltc < current_price_ltc:
+                krw = get_balance("KRW")
+                if krw > 5000:
+                    upbit.buy_market_order("KRW-LTC", krw*0.9995)
         else:
             bch = get_balance("BCH")
-            if bch > 0.000008:
+            ltc = get_balance("LTC")
+            if bch > 0.0005:
                 upbit.sell_market_order("KRW-BCH", bch*0.9995)
+            if ltc > 0.0015:
+                upbit.sell_market_order("KRW-BCH", ltc*0.9995)    
         time.sleep(1)
     except Exception as e:
         print(e)
