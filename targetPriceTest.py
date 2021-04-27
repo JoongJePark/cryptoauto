@@ -30,6 +30,8 @@ def get_balance(ticker):
 
 target_price_bch = get_target_price("KRW-BCH", 0.5)
 target_price_ltc = get_target_price("KRW-LTC", 0.5)
+target_price_btt = get_target_price("KRW-BTT", 0.5)
 
 print(target_price_bch)
 print(target_price_ltc)
+print(target_price_btt)

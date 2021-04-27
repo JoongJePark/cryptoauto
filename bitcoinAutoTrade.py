@@ -47,6 +47,8 @@ while True:
             current_price_bch = get_current_price("KRW-BCH")
             target_price_ltc = get_target_price("KRW-LTC", 0.5)
             current_price_ltc = get_current_price("KRW-LTC")
+            target_price_btt = get_target_price("KRW-BTT", 0.5)
+            current_price_btt = get_current_price("KRW-BTT")
             if target_price_bch < current_price_bch:
                 krw = get_balance("KRW")
                 if krw > 5000:
@@ -55,13 +57,20 @@ while True:
                 krw = get_balance("KRW")
                 if krw > 5000:
                     upbit.buy_market_order("KRW-LTC", krw*0.9995)
+            if target_price_btt < current_price_btt:
+                krw = get_balance("KRW")
+                if krw > 5000:
+                    upbit.buy_market_order("KRW-BTT", krw*0.9995)
         else:
             bch = get_balance("BCH")
             ltc = get_balance("LTC")
+            btt = get_balance("BTT")
             if bch > 0.0005:
                 upbit.sell_market_order("KRW-BCH", bch*0.9995)
             if ltc > 0.0015:
-                upbit.sell_market_order("KRW-BCH", ltc*0.9995)    
+                upbit.sell_market_order("KRW-BCH", ltc*0.9995)
+            if bch > 0.1:
+                upbit.sell_market_order("KRW-BTT", bch*0.9995)
         time.sleep(1)
     except Exception as e:
         print(e)
