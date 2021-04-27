@@ -76,10 +76,10 @@ while True:
                 upbit.sell_market_order("KRW-BCH", bch*0.9995)
             if ltc > 0.0015:
                 upbit.sell_market_order("KRW-BCH", ltc*0.9995)
-            if bch > 0.1:
-                upbit.sell_market_order("KRW-BTT", bch*0.9995)
+            if btt > 0.1:
+                upbit.sell_market_order("KRW-BTT", btt*0.9995)
             if doge > 0.01:
-                upbit.sell_market_order("KRW-DOGE", bch*0.9995)
+                upbit.sell_market_order("KRW-DOGE", doge*0.9995)
         time.sleep(1)
     except Exception as e:
         print(e)
