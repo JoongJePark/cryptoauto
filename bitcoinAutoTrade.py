@@ -19,7 +19,7 @@ def get_start_time(ticker):
 
 def get_balance(ticker):
     """잔고 조회"""
-    balances = upbit.get_balances()
+    balances = upbit.get_balances(     )
     for b in balances:
         if b['currency'] == ticker:
             if b['balance'] is not None:
@@ -68,7 +68,7 @@ while True:
                 if krw > 5000:
                     upbit.buy_market_order("KRW-DOGE", krw*0.9995)
         else:
-            bch = get_balance("BCH")
+            bch = get_balance(              "BCH")
             ltc = get_balance("LTC")
             btt = get_balance("BTT")
             doge = get_balance("DOGE")
