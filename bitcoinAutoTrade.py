@@ -19,7 +19,7 @@ def get_start_time(ticker):
 
 def get_balance(ticker):
     """잔고 조회"""
-    balances = upbit.get_balances()
+    balances = upbit.get_balances(     )
     for b in balances:
         if b['currency'] == ticker:
             if b['balance'] is not None:
@@ -47,6 +47,10 @@ while True:
             current_price_bch = get_current_price("KRW-BCH")
             target_price_ltc = get_target_price("KRW-LTC", 0.5)
             current_price_ltc = get_current_price("KRW-LTC")
+            target_price_btt = get_target_price("KRW-BTT", 0.5)
+            current_price_btt = get_current_price("KRW-BTT")
+            target_price_doge = get_target_price("KRW-DOGE", 0.7)
+            current_price_doge = get_current_price("KRW-DOGE")
             if target_price_bch < current_price_bch:
                 krw = get_balance("KRW")
                 if krw > 5000:
@@ -55,13 +59,27 @@ while True:
                 krw = get_balance("KRW")
                 if krw > 5000:
                     upbit.buy_market_order("KRW-LTC", krw*0.9995)
+            if target_price_btt < current_price_btt:
+                krw = get_balance("KRW")
+                if krw > 5000:
+                    upbit.buy_market_order("KRW-BTT", krw*0.9995)
+            if target_price_doge < current_price_doge:
+                krw = get_balance("KRW")
+                if krw > 5000:
+                    upbit.buy_market_order("KRW-DOGE", krw*0.9995)
         else:
-            bch = get_balance("BCH")
+            bch = get_balance(              "BCH")
             ltc = get_balance("LTC")
+            btt = get_balance("BTT")
+            doge = get_balance("DOGE")
             if bch > 0.0005:
                 upbit.sell_market_order("KRW-BCH", bch*0.9995)
             if ltc > 0.0015:
-                upbit.sell_market_order("KRW-BCH", ltc*0.9995)    
+                upbit.sell_market_order("KRW-BCH", ltc*0.9995)
+            if btt > 0.1:
+                upbit.sell_market_order("KRW-BTT", btt*0.9995)
+            if doge > 0.01:
+                upbit.sell_market_order("KRW-DOGE", doge*0.9995)
         time.sleep(1)
     except Exception as e:
         print(e)

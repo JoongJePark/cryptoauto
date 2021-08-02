@@ -5,6 +5,7 @@ import datetime
 access = "fHpE3fxFWxbHWztM0VBRlFRGWa2yt7CZwLFT3SBY"
 secret = "mb9vr8paf8kOMaI20Oqx3j7mD1qhmllMBvYXZMnC"
 
+upbit = pyupbit.Upbit(access, secret)
 
 def get_target_price(ticker, k):
     """변동성 돌파 전략으로 매수 목표가 조회"""
@@ -30,6 +31,10 @@ def get_balance(ticker):
 
 target_price_bch = get_target_price("KRW-BCH", 0.5)
 target_price_ltc = get_target_price("KRW-LTC", 0.5)
+target_price_btt = get_target_price("KRW-BTT", 0.5)
+target_price_doge = get_target_price("KRW-DOGE", 0.5)
 
 print(target_price_bch)
 print(target_price_ltc)
+print(target_price_btt)
+print(target_price_doge)
